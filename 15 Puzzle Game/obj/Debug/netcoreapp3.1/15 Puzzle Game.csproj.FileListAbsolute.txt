@@ -1,0 +1,4 @@
+F:\Trabajos U\II semestre 2021\Paradigmas\Programas\C#\15\15 Puzzle Game\obj\Debug\netcoreapp3.1\15 Puzzle Game.csproj.AssemblyReference.cache
+F:\Trabajos U\II semestre 2021\Paradigmas\Programas\C#\15\15 Puzzle Game\obj\Debug\netcoreapp3.1\15 Puzzle Game.AssemblyInfoInputs.cache
+F:\Trabajos U\II semestre 2021\Paradigmas\Programas\C#\15\15 Puzzle Game\obj\Debug\netcoreapp3.1\15 Puzzle Game.AssemblyInfo.cs
+F:\Trabajos U\II semestre 2021\Paradigmas\Programas\C#\15\15 Puzzle Game\obj\Debug\netcoreapp3.1\15 Puzzle Game.csproj.CoreCompileInputs.cache

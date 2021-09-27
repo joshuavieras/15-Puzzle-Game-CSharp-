@@ -6,10 +6,10 @@ namespace _15_Puzzle_Game
 {
     class Tablero
     {
-        private int col_count; 
+        private int col_count;
         private int row_count;
         private int[,] table;
-
+        
         private readonly Random _random;
 
         public Tablero(int col, int row)
@@ -36,6 +36,8 @@ namespace _15_Puzzle_Game
             {
                 return col_count;
             }
+
+            set { ; }
         }
 
         public int Row_Count
@@ -44,6 +46,8 @@ namespace _15_Puzzle_Game
             {
                 return row_count;
             }
+
+            set {; }
         }
 
         private int RandomNumber(int min, int max)
@@ -118,6 +122,61 @@ namespace _15_Puzzle_Game
             pos[1] = -1;
 
             return pos;
+        }
+
+        public void Swap(int i, int j, TableController.Moves move)
+        {
+            switch (move)
+            {
+                case TableController.Moves.MOVE_UP:
+                    {
+                        int aux = 0;
+                        aux = table[i - 1, j];
+                        table[i - 1, j] = table[i, j];
+                        table[i, j] = aux;
+                        break;
+                    }
+                case TableController.Moves.MOVE_DOWN:
+                    {
+                        int aux = 0;
+                        aux = table[i + 1, j];
+                        table[i + 1, j] = table[i, j];
+                        table[i, j] = aux;
+                        break;
+                    }
+                   
+                case TableController.Moves.MOVE_LEFT:
+                    {
+                        int aux = 0;
+                        aux = table[i, j - 1];
+                        table[i, j - 1] = table[i, j];
+                        table[i, j] = aux;
+                        break;
+                    }
+                    
+                case TableController.Moves.MOVE_RIGHT:
+                    {
+                        int aux = 0;
+                        aux = table[i, j + 1];
+                        table[i, j + 1] = table[i, j];
+                        table[i, j] = aux;
+                    }
+                    
+                    break;
+                default:
+                    break;
+            }
+            
+        }
+
+        public bool Compare(int i, int j, int number)
+        {
+            if(table[i, j] == number)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         ~Tablero()
