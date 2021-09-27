@@ -141,6 +141,11 @@ namespace _15_Puzzle_Game
             return false;
         }
 
+        public int ObtenerValor(int i, int j)
+        {
+            return table.GetValue(i, j);
+        }
+
         ~TableController()
         {
 

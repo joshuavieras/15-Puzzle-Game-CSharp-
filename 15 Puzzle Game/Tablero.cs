@@ -28,6 +28,7 @@ namespace _15_Puzzle_Game
                     table[i, j] = 0;
                 }
             }
+            FillTable();
         }
 
         public int Col_Count
@@ -63,11 +64,11 @@ namespace _15_Puzzle_Game
             {
                 for (int j = 0; j < col_count; j++)
                 {
-                    numRand = RandomNumber(1, (row_count * col_count) - 1);
+                    numRand = RandomNumber(1, (row_count * col_count));
 
                     while (VerifiyNumber(numRand))
                     {
-                        numRand = RandomNumber(1, (row_count * col_count) - 1);
+                        numRand = RandomNumber(1, (row_count * col_count));
                     }
 
                     table[i, j] = numRand;
@@ -178,7 +179,11 @@ namespace _15_Puzzle_Game
 
             return false;
         }
-
+        
+        public int GetValue(int i, int j)
+        {
+            return table[i, j];
+        }
         ~Tablero()
         {
 
