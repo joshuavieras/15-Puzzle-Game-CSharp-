@@ -30,7 +30,6 @@ namespace _15_Puzzle_Game
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button16 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
@@ -49,12 +48,10 @@ namespace _15_Puzzle_Game
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // printDialog1
-            // 
-            this.printDialog1.UseEXDialog = true;
             // 
             // tableLayoutPanel1
             // 
@@ -80,7 +77,7 @@ namespace _15_Puzzle_Game
             this.tableLayoutPanel1.Controls.Add(this.button3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.button2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(224, 110);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(213, 110);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -99,6 +96,7 @@ namespace _15_Puzzle_Game
             this.button16.TabIndex = 15;
             this.button16.Text = "button16";
             this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
             // button15
             // 
@@ -108,6 +106,7 @@ namespace _15_Puzzle_Game
             this.button15.TabIndex = 14;
             this.button15.Text = "button15";
             this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
             // button14
             // 
@@ -117,6 +116,7 @@ namespace _15_Puzzle_Game
             this.button14.TabIndex = 13;
             this.button14.Text = "button14";
             this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // button13
             // 
@@ -126,6 +126,7 @@ namespace _15_Puzzle_Game
             this.button13.TabIndex = 12;
             this.button13.Text = "button13";
             this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // button12
             // 
@@ -135,6 +136,7 @@ namespace _15_Puzzle_Game
             this.button12.TabIndex = 11;
             this.button12.Text = "button12";
             this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // button11
             // 
@@ -144,6 +146,7 @@ namespace _15_Puzzle_Game
             this.button11.TabIndex = 10;
             this.button11.Text = "button11";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button10
             // 
@@ -153,6 +156,7 @@ namespace _15_Puzzle_Game
             this.button10.TabIndex = 9;
             this.button10.Text = "button10";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button9
             // 
@@ -162,6 +166,7 @@ namespace _15_Puzzle_Game
             this.button9.TabIndex = 8;
             this.button9.Text = "button9";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button8
             // 
@@ -171,6 +176,7 @@ namespace _15_Puzzle_Game
             this.button8.TabIndex = 7;
             this.button8.Text = "button8";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button7
             // 
@@ -180,6 +186,7 @@ namespace _15_Puzzle_Game
             this.button7.TabIndex = 6;
             this.button7.Text = "button7";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button6
             // 
@@ -207,6 +214,7 @@ namespace _15_Puzzle_Game
             this.button4.TabIndex = 3;
             this.button4.Text = "button4";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -216,6 +224,7 @@ namespace _15_Puzzle_Game
             this.button3.TabIndex = 2;
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -225,6 +234,7 @@ namespace _15_Puzzle_Game
             this.button2.TabIndex = 1;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -242,12 +252,38 @@ namespace _15_Puzzle_Game
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Cooper Black", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.Maroon;
-            this.label1.Location = new System.Drawing.Point(268, 42);
+            this.label1.Location = new System.Drawing.Point(261, 43);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(294, 40);
             this.label1.TabIndex = 1;
             this.label1.Text = "15 Puzzle Game";
             this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Maroon;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label2.Location = new System.Drawing.Point(583, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(210, 34);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Number of moves";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Maroon;
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label3.Location = new System.Drawing.Point(799, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 34);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "0";
             // 
             // Form1
             // 
@@ -256,6 +292,8 @@ namespace _15_Puzzle_Game
             this.BackColor = System.Drawing.Color.LightBlue;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(835, 496);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";
@@ -268,7 +306,6 @@ namespace _15_Puzzle_Game
 
         #endregion
 
-        private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button button15;
@@ -287,6 +324,8 @@ namespace _15_Puzzle_Game
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 
