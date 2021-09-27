@@ -145,6 +145,21 @@ namespace _15_Puzzle_Game
         {
             return table.GetValue(i, j);
         }
+        
+        public int getCols()
+        {
+            return table.Col_Count;
+        }
+
+        public int getRows()
+        {
+            return table.Row_Count;
+        }
+
+        public int[] PosZero()
+        {
+            return table.RetornarPosVacio();
+        }
 
         ~TableController()
         {
