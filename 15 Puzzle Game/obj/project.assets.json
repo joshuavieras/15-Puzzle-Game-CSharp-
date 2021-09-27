@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\joshu\\.nuget\\packages\\": {}
+    "C:\\Users\\Dani\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\joshu\\source\\repos\\15 Puzzle Game\\15 Puzzle Game\\15 Puzzle Game.csproj",
+      "projectUniqueName": "F:\\Trabajos U\\II semestre 2021\\Paradigmas\\Programas\\C#\\15\\15 Puzzle Game\\15 Puzzle Game.csproj",
       "projectName": "15 Puzzle Game",
-      "projectPath": "C:\\Users\\joshu\\source\\repos\\15 Puzzle Game\\15 Puzzle Game\\15 Puzzle Game.csproj",
-      "packagesPath": "C:\\Users\\joshu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\joshu\\source\\repos\\15 Puzzle Game\\15 Puzzle Game\\obj\\",
+      "projectPath": "F:\\Trabajos U\\II semestre 2021\\Paradigmas\\Programas\\C#\\15\\15 Puzzle Game\\15 Puzzle Game.csproj",
+      "packagesPath": "C:\\Users\\Dani\\.nuget\\packages\\",
+      "outputPath": "F:\\Trabajos U\\II semestre 2021\\Paradigmas\\Programas\\C#\\15\\15 Puzzle Game\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\joshu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Dani\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -60,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

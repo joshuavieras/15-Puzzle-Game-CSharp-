@@ -6,38 +6,26 @@ namespace _15_Puzzle_Game
 {
     class TableController
     {
-        Tablero table;
+        public readonly Tablero table;
 
-        enum Moves{ MOVE_UP = 1, MOVE_DOWN = 2, MOVE_LEFT = 3, MOVE_RIGHT = 4, END_GAME = 5, UNDEFINED = 0};
+        public enum Moves{ MOVE_UP = 1, MOVE_DOWN = 2, MOVE_LEFT = 3, MOVE_RIGHT = 4, END_GAME = 5, UNDEFINED = 0};
 
         public TableController(Tablero table)
         {
             this.table = table;
         }
 
-        
-
-        public bool CheckIfValidMove(Moves)
+        public int CheckIfValidMove(Moves move)
         {
             int[] pos = table.RetornarPosVacio();
             int i = pos[0], j = pos[1];
 
             switch (move)
             {
-                case MOVE_UP:
+                case Moves.MOVE_UP:
+
                     i--;
                     if (i < 0)
-                    {
-                        return fak;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                    break;
-                case MOVE_DOWN:
-                    i++;
-                    if (i >= table.row_count)
                     {
                         return -1;
                     }
@@ -45,8 +33,17 @@ namespace _15_Puzzle_Game
                     {
                         return 1;
                     }
-                    break;
-                case MOVE_LEFT:
+                case Moves.MOVE_DOWN:
+                    i++;
+                    if (i >= table.Row_Count)
+                    {
+                        return -1;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                case Moves.MOVE_LEFT:
                     j--;
                     if (j < 0)
                     {
@@ -56,71 +53,64 @@ namespace _15_Puzzle_Game
                     {
                         return 1;
                     }
-                    break;
-                case MOVE_RIGHT:
+                case Moves.MOVE_RIGHT:
                     j++;
-                    if (j >= table.col_count)
+                    if (j >= table.Col_Count)
                     {
                         return -1;
                     }
                     else
                     {
-                        return 1true;
+                        return 1;
                     }
-                    break;
-                case END_GAME:
+                case Moves.END_GAME:
                     return -100;
+                case Moves.UNDEFINED:
+                    return -69;
                 default:
-                    return 0;
-                    break;
+                    return 69;
             }
-
-            return -1;
         }
 
-        public void DoTheMove(MOVES move)
+        public void DoTheMove(Moves move)
         {
             switch (move)
             {
 
-                case MOVE_UP:
+                case Moves.MOVE_UP:
                     {
-                        int i = retornarIDeVacio(), j = retornarJDeVacio();
-                        int tmp = 0;
-                        tmp = table.tablero[i - 1][j];
-                        table.tablero[i - 1][j] = table.tablero[i][j];
-                        table.tablero[i][j] = tmp;
+                        int[] pos = table.RetornarPosVacio();
+                        int i = pos[0], j = pos[1];
+
+                        table.Swap(i, j, move);
                         break;
                     }
-                case MOVE_DOWN:
+                case Moves.MOVE_DOWN:
                     {
-                        int i = retornarIDeVacio(), j = retornarJDeVacio();
-                        int tmp = 0;
-                        tmp = table.tablero[i + 1][j];
-                        table.tablero[i + 1][j] = table.tablero[i][j];
-                        table.tablero[i][j] = tmp;
+                        int[] pos = table.RetornarPosVacio();
+                        int i = pos[0], j = pos[1];
+
+                        table.Swap(i, j, move);
                         break;
                     }
-                case MOVE_LEFT:
+                case Moves.MOVE_LEFT:
                     {
-                        int i = retornarIDeVacio(), j = retornarJDeVacio();
-                        int tmp = 0;
-                        tmp = table.tablero[i][j - 1];
-                        table.tablero[i][j - 1] = table.tablero[i][j];
-                        table.tablero[i][j] = tmp;
+                        int[] pos = table.RetornarPosVacio();
+                        int i = pos[0], j = pos[1];
+
+                        table.Swap(i, j, move);
                     }
                     break;
 
-                case MOVE_RIGHT:
+                case Moves.MOVE_RIGHT:
                     {
-                        int i = retornarIDeVacio(), j = retornarJDeVacio();
-                        int tmp = 0;
-                        tmp = table.tablero[i][j + 1];
-                        table.tablero[i][j + 1] = table.tablero[i][j];
-                        table.tablero[i][j] = tmp;
+                        int[] pos = table.RetornarPosVacio();
+                        int i = pos[0], j = pos[1];
+
+                        table.Swap(i, j, move);
                         break;
                     }
-                case END_GAME:
+                case Moves.END_GAME:
 
                     break;
                 default:
@@ -129,12 +119,29 @@ namespace _15_Puzzle_Game
             }
         }
 
-        public int CheckIfWon()
+        public bool CheckIfWon()
         {
-            return 1;
+            int contador = 1;
+            for (int i = 0; i < table.Row_Count; i++)
+            {
+                for (int j = 0; j < table.Col_Count; j++)
+                {
+                    if (table.Compare(i, j, contador))
+                    {
+                        contador++;
+
+                        if (contador == 15 && table.Compare(i, j, 0))
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
         }
 
-            ~TableController()
+        ~TableController()
         {
 
         }
