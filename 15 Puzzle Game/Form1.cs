@@ -39,7 +39,7 @@ namespace _15_Puzzle_Game
                 {
                     for (int j = 0; j < TC.getCols(); j++)
                     {
-                        this.tableLayoutPanel1.GetControlFromPosition(i, j).Enabled = true;   
+                        this.tableLayoutPanel1.GetControlFromPosition(i, j).Enabled = true;
                     }
                 }
             }
@@ -62,22 +62,22 @@ namespace _15_Puzzle_Game
         {
             if (TC.CheckIfValidMove(TableController.Moves.MOVE_UP) == 1)
             {
-                this.tableLayoutPanel1.GetControlFromPosition(i - 1, j).Enabled = true;
+                this.tableLayoutPanel1.GetControlFromPosition(i, j - 1).Enabled = true;
             }
 
             if (TC.CheckIfValidMove(TableController.Moves.MOVE_DOWN) == 1)
             {
-                this.tableLayoutPanel1.GetControlFromPosition(i + 1, j).Enabled = true;
+                this.tableLayoutPanel1.GetControlFromPosition(i, j + 1).Enabled = true;
             }
 
             if (TC.CheckIfValidMove(TableController.Moves.MOVE_LEFT) == 1)
             {
-                this.tableLayoutPanel1.GetControlFromPosition(i, j - 1).Enabled = true;
+                this.tableLayoutPanel1.GetControlFromPosition(i - 1, j).Enabled = true;
             }
 
             if (TC.CheckIfValidMove(TableController.Moves.MOVE_RIGHT) == 1)
             {
-                this.tableLayoutPanel1.GetControlFromPosition(i, j + 1).Enabled = true;
+                this.tableLayoutPanel1.GetControlFromPosition(i + 1, j).Enabled = true;
             }
         }
 
@@ -91,24 +91,24 @@ namespace _15_Puzzle_Game
             {
                 if (j0 + 1 == j)
                 {
-                    return TableController.Moves.MOVE_RIGHT;
+                    return TableController.Moves.MOVE_DOWN;//UP
                 }
 
                 if (j0 - 1 == j)
                 {
-                    return TableController.Moves.MOVE_LEFT;
+                    return TableController.Moves.MOVE_UP;//DOWN
                 }
             }
             else if (j0 == j)
             {
-                if (i + 1 == i)
+                if (i0 + 1 == i)
                 {
-                    return TableController.Moves.MOVE_UP;
+                    return TableController.Moves.MOVE_RIGHT;//RIGHT
                 }
 
-                if (i - 1 == i)
+                if (i0 - 1 == i)
                 {
-                    return TableController.Moves.MOVE_DOWN;
+                    return TableController.Moves.MOVE_LEFT;//LEFT
                 }
             }
             else
@@ -118,7 +118,27 @@ namespace _15_Puzzle_Game
 
             return TableController.Moves.UNDEFINED;
         }
-        
+
+        private void DoAMove(int i, int j)
+        {
+            ChangeStateExcept(69, 69, 404);
+
+            //Aqui está el bug, técnicamente si retorna bien el movimiento que se quiere hacer pero no lo hace bien
+            TableController.Moves move = ReturnMoveMade(i, j);
+
+            num_moves++;
+
+            this.label3.Text = "" + num_moves;
+
+            TC.DoTheMove(move);
+
+            UpdateTable();
+
+            cero_pressed = false;
+
+            //Validar si se gana y hacer algo que evite que se siga jugando
+        }
+
         private void UpdateTable()
         {
             for (int i = 0; i < TC.getRows(); i++)
@@ -129,6 +149,15 @@ namespace _15_Puzzle_Game
                     // this.tableLayoutPanel1.GetChildAtPoint(new Point(i, j)).Text= "" + TC.ObtenerValor(i,j);
                 }
             }
+        }
+
+        private void CeroPressed(int i, int j)
+        {
+            ChangeStateExcept(i, j);
+
+            cero_pressed = true;
+
+            UnlockValidMoves(i, j);
         }
 
         public Form1()
@@ -147,20 +176,11 @@ namespace _15_Puzzle_Game
             {
                 for (int j = 0; j < TC.getCols(); j++) 
                 {
-                    this.tableLayoutPanel1.GetControlFromPosition(i, j).Text = "" +TC.ObtenerValor(i, j);
+                    //this.tableLayoutPanel1.GetControlFromPosition(i, j).Text = "i=" + i + ", j=" + j;
+                    this.tableLayoutPanel1.GetControlFromPosition(i, j).Text = "" + TC.ObtenerValor(i, j);
                     // this.tableLayoutPanel1.GetChildAtPoint(new Point(i, j)).Text= "" + TC.ObtenerValor(i,j);
                 }
             }
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click (object sender, EventArgs e)
-        {
-            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -169,15 +189,21 @@ namespace _15_Puzzle_Game
             {
                 if (!cero_pressed)
                 {
-                    ChangeStateExcept(0, 0);
-
-                    cero_pressed = true;
+                    CeroPressed(0, 0);
                 }
                 else
                 {
                     ChangeStateExcept(0, 0, 0);
 
                     cero_pressed = false;
+                }
+            }
+            else
+            {
+                // Do the move
+                if (cero_pressed)
+                {
+                    DoAMove(0, 0);
                 }
             }
         }
@@ -188,15 +214,21 @@ namespace _15_Puzzle_Game
             {
                 if (!cero_pressed)
                 {
-                    ChangeStateExcept(0, 1);
-
-                    cero_pressed = true;
+                    CeroPressed(1, 0);
                 }
                 else
                 {
-                    ChangeStateExcept(0, 1, 0);
+                    ChangeStateExcept(1, 0, 0);
 
                     cero_pressed = false;
+                }
+            }
+            else
+            {
+                // Do the move
+                if (cero_pressed)
+                {
+                    DoAMove(1, 0);
                 }
             }
         }
@@ -207,15 +239,21 @@ namespace _15_Puzzle_Game
             {
                 if (!cero_pressed)
                 {
-                    ChangeStateExcept(0, 2);
-
-                    cero_pressed = true;
+                    CeroPressed(2, 0);
                 }
                 else
                 {
-                    ChangeStateExcept(0, 2, 0);
+                    ChangeStateExcept(2, 0, 0);
 
                     cero_pressed = false;
+                }
+            }
+            else
+            {
+                // Do the move
+                if (cero_pressed)
+                {
+                    DoAMove(2, 0);
                 }
             }
         }
@@ -226,15 +264,21 @@ namespace _15_Puzzle_Game
             {
                 if (!cero_pressed)
                 {
-                    ChangeStateExcept(0, 3);
-
-                    cero_pressed = true;
+                    CeroPressed(3, 0);
                 }
                 else
                 {
-                    ChangeStateExcept(0, 3, 0);
+                    ChangeStateExcept(3, 0, 0);
 
                     cero_pressed = false;
+                }
+            }
+            else
+            {
+                // Do the move
+                if (cero_pressed)
+                {
+                    DoAMove(3, 0);
                 }
             }
         }
@@ -245,15 +289,21 @@ namespace _15_Puzzle_Game
             {
                 if (!cero_pressed)
                 {
-                    ChangeStateExcept(1, 0);
-
-                    cero_pressed = true;
+                    CeroPressed(0, 1);
                 }
                 else
                 {
-                    ChangeStateExcept(1, 0, 0);
+                    ChangeStateExcept(0, 1, 0);
 
                     cero_pressed = false;
+                }
+            }
+            else
+            {
+                // Do the move
+                if (cero_pressed)
+                {
+                    DoAMove(0, 1);
                 }
             }
         }
@@ -264,15 +314,21 @@ namespace _15_Puzzle_Game
             {
                 if (!cero_pressed)
                 {
-                    ChangeStateExcept(1, 1);
-
-                    cero_pressed = true;
+                    CeroPressed(1, 1);
                 }
                 else
                 {
                     ChangeStateExcept(1, 1, 0);
 
                     cero_pressed = false;
+                }
+            }
+            else
+            {
+                // Do the move
+                if (cero_pressed)
+                {
+                    DoAMove(1, 1);
                 }
             }
         }
@@ -283,15 +339,21 @@ namespace _15_Puzzle_Game
             {
                 if (!cero_pressed)
                 {
-                    ChangeStateExcept(1, 2);
-
-                    cero_pressed = true;
+                    CeroPressed(2, 1);
                 }
                 else
                 {
-                    ChangeStateExcept(1, 2, 0);
+                    ChangeStateExcept(2, 1, 0);
 
                     cero_pressed = false;
+                }
+            }
+            else
+            {
+                // Do the move
+                if (cero_pressed)
+                {
+                    DoAMove(2, 1);
                 }
             }
         }
@@ -302,15 +364,21 @@ namespace _15_Puzzle_Game
             {
                 if (!cero_pressed)
                 {
-                    ChangeStateExcept(1, 3);
-
-                    cero_pressed = true;
+                    CeroPressed(3, 1);
                 }
                 else
                 {
-                    ChangeStateExcept(1, 3, 0);
+                    ChangeStateExcept(3, 1, 0);
 
                     cero_pressed = false;
+                }
+            }
+            else
+            {
+                // Do the move
+                if (cero_pressed)
+                {
+                    DoAMove(3, 1);
                 }
             }
         }
@@ -321,15 +389,21 @@ namespace _15_Puzzle_Game
             {
                 if (!cero_pressed)
                 {
-                    ChangeStateExcept(2, 0);
-
-                    cero_pressed = true;
+                    CeroPressed(0, 2);
                 }
                 else
                 {
-                    ChangeStateExcept(2, 0, 0);
+                    ChangeStateExcept(0, 2, 0);
 
                     cero_pressed = false;
+                }
+            }
+            else
+            {
+                // Do the move
+                if (cero_pressed)
+                {
+                    DoAMove(0, 2);
                 }
             }
         }
@@ -340,15 +414,21 @@ namespace _15_Puzzle_Game
             {
                 if (!cero_pressed)
                 {
-                    ChangeStateExcept(2, 1);
-
-                    cero_pressed = true;
+                    CeroPressed(1, 2);
                 }
                 else
                 {
-                    ChangeStateExcept(2, 1, 0);
+                    ChangeStateExcept(1, 2, 0);
 
                     cero_pressed = false;
+                }
+            }
+            else
+            {
+                // Do the move
+                if (cero_pressed)
+                {
+                    DoAMove(1, 2);
                 }
             }
         }
@@ -359,15 +439,21 @@ namespace _15_Puzzle_Game
             {
                 if (!cero_pressed)
                 {
-                    ChangeStateExcept(2, 2);
-
-                    cero_pressed = true;
+                    CeroPressed(2, 2);
                 }
                 else
                 {
                     ChangeStateExcept(2, 2, 0);
 
                     cero_pressed = false;
+                }
+            }
+            else
+            {
+                // Do the move
+                if (cero_pressed)
+                {
+                    DoAMove(2, 2);
                 }
             }
         }
@@ -378,66 +464,7 @@ namespace _15_Puzzle_Game
             {
                 if (!cero_pressed)
                 {
-                    ChangeStateExcept(2, 3);
-
-                    cero_pressed = true;
-                }
-                else
-                {
-                    ChangeStateExcept(2, 3, 0);
-
-                    cero_pressed = false;
-                }
-            }
-        }
-
-        private void button13_Click(object sender, EventArgs e)
-        {
-            if (this.button13.Text == "0")
-            {
-                if (!cero_pressed)
-                {
-                    ChangeStateExcept(3, 0);
-
-                    cero_pressed = true;
-                }
-                else
-                {
-                    ChangeStateExcept(3, 0, 0);
-
-                    cero_pressed = false;
-                }
-            }
-        }
-
-        private void button14_Click(object sender, EventArgs e)
-        {
-            if (this.button14.Text == "0")
-            {
-                if (!cero_pressed)
-                {
-                    ChangeStateExcept(3, 1);
-
-                    cero_pressed = true;
-                }
-                else
-                {
-                    ChangeStateExcept(3, 1, 0);
-
-                    cero_pressed = false;
-                }
-            }
-        }
-
-        private void button15_Click(object sender, EventArgs e)
-        {
-            if (this.button15.Text == "0")
-            {
-                if (!cero_pressed)
-                {
-                    ChangeStateExcept(3, 2);
-
-                    cero_pressed = true;
+                    CeroPressed(3, 2);
                 }
                 else
                 {
@@ -451,18 +478,82 @@ namespace _15_Puzzle_Game
                 // Do the move
                 if (cero_pressed)
                 {
-                    ChangeStateExcept(69, 69, 404);
+                    DoAMove(3, 2);
+                }
+            }
+        }
 
-                    //Aqui está el bug, técnicamente si retorna bien el movimiento que se quiere hacer pero no lo hace bien
-                    TableController.Moves move = ReturnMoveMade(3, 2);
-
-                    this.label3.Text = "" + move;
-
-                    TC.DoTheMove(move);
-
-                    UpdateTable();
+        private void button13_Click(object sender, EventArgs e)
+        {
+            if (this.button13.Text == "0")
+            {
+                if (!cero_pressed)
+                {
+                    CeroPressed(0, 3);
+                }
+                else
+                {
+                    ChangeStateExcept(0, 3, 0);
 
                     cero_pressed = false;
+                }
+            }
+            else
+            {
+                // Do the move
+                if (cero_pressed)
+                {
+                    DoAMove(0, 3);
+                }
+            }
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            if (this.button14.Text == "0")
+            {
+                if (!cero_pressed)
+                {
+                    CeroPressed(1, 3);
+                }
+                else
+                {
+                    ChangeStateExcept(1, 3, 0);
+
+                    cero_pressed = false;
+                }
+            }
+            else
+            {
+                // Do the move
+                if (cero_pressed)
+                {
+                    DoAMove(1, 3);
+                }
+            }
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            if (this.button15.Text == "0")
+            {
+                if (!cero_pressed)
+                {
+                    CeroPressed(2, 3);
+                }
+                else
+                {
+                    ChangeStateExcept(2, 3, 0);
+
+                    cero_pressed = false;
+                }
+            }
+            else
+            {
+                // Do the move
+                if (cero_pressed)
+                {
+                    DoAMove(2, 3);
                 }
             }
         }
@@ -474,11 +565,7 @@ namespace _15_Puzzle_Game
                 if (!cero_pressed)
                 {
                     // Deshabilita todos los botones que no sean cero
-                    ChangeStateExcept(3, 3);
-
-                    cero_pressed = true;
-
-                    UnlockValidMoves(3, 3);
+                    CeroPressed(3, 3);
                 }
                 else
                 {
@@ -493,7 +580,7 @@ namespace _15_Puzzle_Game
                 // Do the move
                 if (cero_pressed)
                 {
-
+                    DoAMove(3, 3);
                 }
             }
         }
