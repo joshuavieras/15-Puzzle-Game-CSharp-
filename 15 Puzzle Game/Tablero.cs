@@ -125,19 +125,22 @@ namespace _15_Puzzle_Game
             return pos;
         }
 
-        public void Swap(int i, int j, TableController.Moves move)
+        public void Swap(TableController.Moves move)
         {
+            int[] pos = RetornarPosVacio();
+            int i = pos[0], j = pos[1];
+
             switch (move)
             {
-                case TableController.Moves.MOVE_UP:
+                case TableController.Moves.MOVE_LEFT: //LEFT | UP
                     {
-                        int aux = 0;
+                        int aux;
                         aux = table[i - 1, j];
                         table[i - 1, j] = table[i, j];
                         table[i, j] = aux;
                         break;
                     }
-                case TableController.Moves.MOVE_DOWN:
+                case TableController.Moves.MOVE_RIGHT://RIGHT | DOWN
                     {
                         int aux = 0;
                         aux = table[i + 1, j];
@@ -145,8 +148,8 @@ namespace _15_Puzzle_Game
                         table[i, j] = aux;
                         break;
                     }
-                   
-                case TableController.Moves.MOVE_LEFT:
+
+                case TableController.Moves.MOVE_UP://UP | LEFT
                     {
                         int aux = 0;
                         aux = table[i, j - 1];
@@ -154,20 +157,19 @@ namespace _15_Puzzle_Game
                         table[i, j] = aux;
                         break;
                     }
-                    
-                case TableController.Moves.MOVE_RIGHT:
+
+                case TableController.Moves.MOVE_DOWN://DOWN | RIGHT
                     {
                         int aux = 0;
                         aux = table[i, j + 1];
                         table[i, j + 1] = table[i, j];
                         table[i, j] = aux;
                     }
-                    
+
                     break;
                 default:
                     break;
             }
-            
         }
 
         public bool Compare(int i, int j, int number)
@@ -184,6 +186,7 @@ namespace _15_Puzzle_Game
         {
             return table[i, j];
         }
+
         ~Tablero()
         {
 

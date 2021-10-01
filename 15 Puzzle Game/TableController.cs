@@ -24,26 +24,6 @@ namespace _15_Puzzle_Game
             {
                 case Moves.MOVE_UP:
 
-                    i--;
-                    if (i < 0)
-                    {
-                        return -1;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                case Moves.MOVE_DOWN:
-                    i++;
-                    if (i >= table.Row_Count)
-                    {
-                        return -1;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                case Moves.MOVE_LEFT:
                     j--;
                     if (j < 0)
                     {
@@ -53,9 +33,29 @@ namespace _15_Puzzle_Game
                     {
                         return 1;
                     }
-                case Moves.MOVE_RIGHT:
+                case Moves.MOVE_DOWN:
                     j++;
-                    if (j >= table.Col_Count)
+                    if (j >= table.Row_Count)
+                    {
+                        return -1;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                case Moves.MOVE_LEFT:
+                    i--;
+                    if (i < 0)
+                    {
+                        return -1;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                case Moves.MOVE_RIGHT:
+                    i++;
+                    if (i >= table.Col_Count)
                     {
                         return -1;
                     }
@@ -74,48 +74,9 @@ namespace _15_Puzzle_Game
 
         public void DoTheMove(Moves move)
         {
-            switch (move)
+            if(move!=Moves.UNDEFINED || move != Moves.END_GAME)
             {
-
-                case Moves.MOVE_UP:
-                    {
-                        int[] pos = table.RetornarPosVacio();
-                        int i = pos[0], j = pos[1];
-
-                        table.Swap(i, j, move);
-                        break;
-                    }
-                case Moves.MOVE_DOWN:
-                    {
-                        int[] pos = table.RetornarPosVacio();
-                        int i = pos[0], j = pos[1];
-
-                        table.Swap(i, j, move);
-                        break;
-                    }
-                case Moves.MOVE_LEFT:
-                    {
-                        int[] pos = table.RetornarPosVacio();
-                        int i = pos[0], j = pos[1];
-
-                        table.Swap(i, j, move);
-                    }
-                    break;
-
-                case Moves.MOVE_RIGHT:
-                    {
-                        int[] pos = table.RetornarPosVacio();
-                        int i = pos[0], j = pos[1];
-
-                        table.Swap(i, j, move);
-                        break;
-                    }
-                case Moves.END_GAME:
-
-                    break;
-                default:
-
-                    break;
+                table.Swap(move);
             }
         }
 
