@@ -57,6 +57,7 @@ namespace _15_Puzzle_Game {
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -378,6 +379,18 @@ namespace _15_Puzzle_Game {
             this.label5.TabIndex = 7;
             this.label5.Text = "0";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(167, 380);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(515, 37);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Felicidades, usted ganó el juego";
+            this.label7.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -385,6 +398,7 @@ namespace _15_Puzzle_Game {
             this.BackColor = System.Drawing.Color.LightBlue;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(835, 496);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -435,6 +449,7 @@ namespace _15_Puzzle_Game {
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
     }
 }
 

@@ -139,7 +139,8 @@ namespace _15_Puzzle_Game
 
             if (TC.CheckIfWon())
             {
-                tableLayoutPanel1.Visible = false;
+                tableLayoutPanel1.Enabled = false;
+                label7.Visible = true;
             }
         }
 
