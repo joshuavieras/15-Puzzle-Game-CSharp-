@@ -13,7 +13,7 @@ namespace _15_Puzzle_Game
     public partial class Form1 : Form
     {
         private readonly TableController TC;
-
+        private Jugador J;
         private bool cero_pressed;
 
         private int num_moves;
@@ -60,6 +60,7 @@ namespace _15_Puzzle_Game
 
         private void UnlockValidMoves(int i, int j)
         {
+
             if (TC.CheckIfValidMove(TableController.Moves.MOVE_UP) == 1)
             {
                 this.tableLayoutPanel1.GetControlFromPosition(i, j - 1).Enabled = true;
@@ -136,7 +137,10 @@ namespace _15_Puzzle_Game
 
             cero_pressed = false;
 
-            //Validar si se gana y hacer algo que evite que se siga jugando
+            if (TC.CheckIfWon())
+            {
+                tableLayoutPanel1.Visible = false;
+            }
         }
 
         private void UpdateTable()
@@ -181,6 +185,7 @@ namespace _15_Puzzle_Game
                     // this.tableLayoutPanel1.GetChildAtPoint(new Point(i, j)).Text= "" + TC.ObtenerValor(i,j);
                 }
             }
+            panel1.Location=new Point(-1, 84);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -583,6 +588,20 @@ namespace _15_Puzzle_Game
                     DoAMove(3, 3);
                 }
             }
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            J = TC.DefinirJugador(textBox1.Text);
+            label5.Text = J.Nombre;
+            tableLayoutPanel1.Visible = true;
+            label1.Visible = true;
+            label2.Visible = true;
+            label3.Visible = true;
+            label4.Visible = true;
+            label5.Visible = true;
+            label6.Visible = true;
+            panel1.Visible = false;
         }
     }
 }

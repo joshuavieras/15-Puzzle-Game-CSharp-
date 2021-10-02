@@ -80,6 +80,13 @@ namespace _15_Puzzle_Game
             }
         }
 
+        public Jugador DefinirJugador(string nombreJugador)
+        {
+            Jugador nuevo=new Jugador(nombreJugador);
+
+            return nuevo;
+        }
+
         public bool CheckIfWon()
         {
             int contador = 1;
@@ -87,19 +94,18 @@ namespace _15_Puzzle_Game
             {
                 for (int j = 0; j < table.Col_Count; j++)
                 {
-                    if (table.Compare(i, j, contador))
+                    if (table.Compare(j, i, contador))
                     {
                         contador++;
-
-                        if (contador == 15 && table.Compare(i, j, 0))
+                        if (contador == 16)
                         {
                             return true;
                         }
                     }
                 }
             }
-
             return false;
+            
         }
 
         public int ObtenerValor(int i, int j)

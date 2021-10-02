@@ -63,9 +63,9 @@ namespace _15_Puzzle_Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap img20210719_13294030 {
+        internal static System.Drawing.Bitmap Jugar {
             get {
-                object obj = ResourceManager.GetObject("img20210719_13294030", resourceCulture);
+                object obj = ResourceManager.GetObject("Jugar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace _15_Puzzle_Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Spider_Man_3_copy_1 {
+        internal static System.Drawing.Bitmap Nombre {
             get {
-                object obj = ResourceManager.GetObject("Spider-Man-3-copy-1", resourceCulture);
+                object obj = ResourceManager.GetObject("Nombre", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace _15_Puzzle_Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Spider_Man_3_copy_11 {
+        internal static System.Drawing.Bitmap Puzzle1 {
             get {
-                object obj = ResourceManager.GetObject("Spider-Man-3-copy-11", resourceCulture);
+                object obj = ResourceManager.GetObject("Puzzle1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace _15_Puzzle_Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Spider_Man_3_copy_12 {
+        internal static System.Drawing.Bitmap SpiderMan {
             get {
-                object obj = ResourceManager.GetObject("Spider-Man-3-copy-12", resourceCulture);
+                object obj = ResourceManager.GetObject("SpiderMan", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace _15_Puzzle_Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Spider_Man_3_copy_13 {
+        internal static System.Drawing.Bitmap Version1 {
             get {
-                object obj = ResourceManager.GetObject("Spider-Man-3-copy-13", resourceCulture);
+                object obj = ResourceManager.GetObject("Version1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

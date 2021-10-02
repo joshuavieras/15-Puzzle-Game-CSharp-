@@ -29,6 +29,7 @@ namespace _15_Puzzle_Game
                 }
             }
             FillTable();
+            ProbarGane();
         }
 
         public int Col_Count
@@ -187,6 +188,28 @@ namespace _15_Puzzle_Game
             return table[i, j];
         }
 
+        public void ProbarGane()
+        {
+            table[0, 0] = 1;
+            table[1, 0] = 2;
+            table[2, 0] = 3;
+            table[3, 0] = 4;
+
+            table[0, 1] = 5;
+            table[1, 1] = 6;
+            table[2, 1] = 7;
+            table[3, 1] = 8;
+
+            table[0, 2] = 9;
+            table[1, 2] = 10;
+            table[2, 2] = 11;
+            table[3, 2] = 12;
+
+            table[0, 3] = 13;
+            table[1, 3] = 14;
+            table[2, 3] = 0;
+            table[3, 3] = 15;
+        }
         ~Tablero()
         {
 
