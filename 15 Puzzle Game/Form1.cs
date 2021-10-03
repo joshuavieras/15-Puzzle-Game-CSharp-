@@ -15,6 +15,7 @@ namespace _15_Puzzle_Game
         private readonly TableController TC;
         private Jugador J;
         private bool cero_pressed;
+        private bool estadoJuego;
 
         private int num_moves;
 
@@ -24,13 +25,15 @@ namespace _15_Puzzle_Game
 
             cero_pressed = false;
 
+            estadoJuego = false;
+
             num_moves = 0;
 
             InitializeComponent();
 
             this.label3.Text = "" + num_moves;
 
-            for (int i = 0; i < TC.getRows(); i++)
+            for (int i = 0; i < TC.GetRows(); i++)
             {
                 for (int j = 0; j < TC.GetCols(); j++)
                 {
@@ -46,7 +49,7 @@ namespace _15_Puzzle_Game
         {
             if (mode == 1)
             {
-                for (int i = 0; i < TC.getRows(); i++)
+                for (int i = 0; i < TC.GetRows(); i++)
                 {
                     for (int j = 0; j < TC.GetCols(); j++)
                     {
@@ -59,7 +62,7 @@ namespace _15_Puzzle_Game
             }
             else if (mode == 404)
             {
-                for (int i = 0; i < TC.getRows(); i++)
+                for (int i = 0; i < TC.GetRows(); i++)
                 {
                     for (int j = 0; j < TC.GetCols(); j++)
                     {
@@ -69,7 +72,7 @@ namespace _15_Puzzle_Game
             }
             else
             {
-                for (int i = 0; i < TC.getRows(); i++)
+                for (int i = 0; i < TC.GetRows(); i++)
                 {
                     for (int j = 0; j < TC.GetCols(); j++)
                     {
@@ -165,12 +168,13 @@ namespace _15_Puzzle_Game
             {
                 tableLayoutPanel1.Enabled = false;
                 label7.Visible = true;
+                estadoJuego = true;
             }
         }
 
         private void UpdateTable()
         {
-            for (int i = 0; i < TC.getRows(); i++)
+            for (int i = 0; i < TC.GetRows(); i++)
             {
                 for (int j = 0; j < TC.GetCols(); j++)
                 {
@@ -603,6 +607,30 @@ namespace _15_Puzzle_Game
             label5.Visible = true;
             label6.Visible = true;
             panel1.Visible = false;
+        }
+
+        void DataWindow_Closing(object sender, CancelEventArgs e)
+        {
+            if (J != null)
+            {
+                J.PartidasJugadas++;
+
+                if (!Archivo.GuardarJuego(J, this.num_moves, estadoJuego))
+                {
+                    MessageBox.Show("Ocurrio un error al guardar", "Error al guardar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            label9.Text = Archivo.CargarRegistros();
+            panel2.Visible = true;
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            panel2.Visible = false;
         }
     }
 }

@@ -44,7 +44,5 @@ namespace _15_Puzzle_Game
                 partidasJugadas = value;
             }
         }
-
-
     }
 }

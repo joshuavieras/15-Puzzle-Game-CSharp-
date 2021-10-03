@@ -116,7 +116,7 @@ namespace _15_Puzzle_Game
             return table.Col_Count;
         }
 
-        public int getRows()
+        public int GetRows()
         {
             return table.Row_Count;
         }
