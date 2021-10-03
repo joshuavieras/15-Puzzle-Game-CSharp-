@@ -82,9 +82,7 @@ namespace _15_Puzzle_Game
 
         public Jugador DefinirJugador(string nombreJugador)
         {
-            Jugador nuevo=new Jugador(nombreJugador);
-
-            return nuevo;
+            return new Jugador(nombreJugador);
         }
 
         public bool CheckIfWon()
@@ -113,7 +111,7 @@ namespace _15_Puzzle_Game
             return table.GetValue(i, j);
         }
         
-        public int getCols()
+        public int GetCols()
         {
             return table.Col_Count;
         }

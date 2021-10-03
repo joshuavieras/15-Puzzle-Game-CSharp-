@@ -6,11 +6,31 @@ namespace _15_Puzzle_Game
 {
     class Tablero
     {
-        private int col_count;
-        private int row_count;
-        private int[,] table;
+        private readonly int col_count;
+        private readonly int row_count;
+        private readonly int[,] table;
         
         private readonly Random _random;
+
+        public Tablero()
+        {
+            _random = new Random();
+
+            this.col_count = 4;
+            this.row_count = 4;
+
+            table = new int[this.col_count, this.row_count];
+
+            for (int i = 0; i < row_count; i++)
+            {
+                for (int j = 0; j < col_count; j++)
+                {
+                    table[i, j] = 0;
+                }
+            }
+            FillTable();
+            ProbarGane();
+        }
 
         public Tablero(int col, int row)
         {
@@ -49,7 +69,7 @@ namespace _15_Puzzle_Game
                 return row_count;
             }
 
-            set {; }
+            set { ; }
         }
 
         private int RandomNumber(int min, int max)
