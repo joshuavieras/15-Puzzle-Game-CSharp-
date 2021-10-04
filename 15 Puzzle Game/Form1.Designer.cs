@@ -58,9 +58,15 @@ namespace _15_Puzzle_Game {
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.button18 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button19 = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -360,11 +366,11 @@ namespace _15_Puzzle_Game {
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label6.Location = new System.Drawing.Point(613, 110);
+            this.label6.Location = new System.Drawing.Point(613, 113);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(220, 34);
+            this.label6.Size = new System.Drawing.Size(213, 34);
             this.label6.TabIndex = 6;
-            this.label6.Text = "Player                    ";
+            this.label6.Text = "Player                   ";
             // 
             // label5
             // 
@@ -382,14 +388,71 @@ namespace _15_Puzzle_Game {
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.label7.Location = new System.Drawing.Point(167, 380);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(515, 37);
             this.label7.TabIndex = 8;
             this.label7.Text = "Felicidades, usted ganó el juego";
             this.label7.Visible = false;
+            // 
+            // button18
+            // 
+            this.button18.BackColor = System.Drawing.Color.LightCyan;
+            this.button18.Location = new System.Drawing.Point(12, 12);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(75, 45);
+            this.button18.TabIndex = 9;
+            this.button18.Text = "Registros";
+            this.button18.UseVisualStyleBackColor = false;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Controls.Add(this.button19);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Location = new System.Drawing.Point(12, 12);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(814, 468);
+            this.panel2.TabIndex = 10;
+            this.panel2.Visible = false;
+            // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(736, 442);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(75, 23);
+            this.button19.TabIndex = 2;
+            this.button19.Text = "Cerrar";
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Maroon;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label9.Location = new System.Drawing.Point(155, 45);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(100, 32);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Registro";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label8.Location = new System.Drawing.Point(358, 13);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(128, 32);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Resultados";
             // 
             // Form1
             // 
@@ -398,6 +461,8 @@ namespace _15_Puzzle_Game {
             this.BackColor = System.Drawing.Color.LightBlue;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(835, 496);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.button18);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label3);
@@ -408,13 +473,17 @@ namespace _15_Puzzle_Game {
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "15 Puzzle Game";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DataWindow_Closing);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -450,6 +519,12 @@ namespace _15_Puzzle_Game {
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button button19;
     }
 }
 
